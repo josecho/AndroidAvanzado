@@ -40,6 +40,10 @@ public class SelectorAdapter extends BaseAdapter {
 		View view = convertView;
 		if (convertView == null){
 			view = layoutInflater.inflate(R.layout.elemento_selector, null);
+		} else {
+			view = convertView;
+			view.setScaleX(1);
+			view.setScaleY(1);
 		}
 		audiolibroTextView = (TextView) view.findViewById(R.id.titulo);
 		imageView = (ImageView) view.findViewById(R.id.imageView1);

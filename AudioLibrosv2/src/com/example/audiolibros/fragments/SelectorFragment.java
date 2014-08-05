@@ -86,7 +86,9 @@ public class SelectorFragment extends Fragment implements AnimationListener , An
 							//Animation anim = AnimationUtils.loadAnimation(actividad, R.anim.menguar);
 							Animator anim = AnimatorInflater.loadAnimator(actividad, R.animator.menguar);
 							//anim.setAnimationListener(SelectorFragment.this);
+							
 							anim.addListener((AnimatorListener) SelectorFragment.this);
+							
 							//view.startAnimation(anim);
 							anim.setTarget(view);
 							anim.start();
