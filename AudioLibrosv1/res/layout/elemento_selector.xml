@@ -19,7 +19,7 @@
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:layout_margin="12dp"
-        android:src="@drawable/books" />
+        android:src="@drawable/books"/>
 
     <TextView
         android:id="@+id/titulo"
