@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_preferencias"
+         android:showAsAction="ifRoom"
+         android:icon="@android:drawable/ic_menu_preferences"
+         android:title="Preferencias"
+         android:orderInCategory="95">
+    </item>
+    <item android:id="@+id/menu_ultimo"
+         android:showAsAction="ifRoom|withText"
+         android:icon="@android:drawable/ic_menu_set_as"
+         android:title="Ir a último"
+         android:orderInCategory="100">
+    </item>
+    <item android:id="@+id/menu_buscar"
+         android:actionViewClass="android.widget.SearchView"
+         android:showAsAction="always|collapseActionView"
+         android:icon="@android:drawable/ic_menu_search"
+         android:title="Buscar"
+         android:orderInCategory="90">
+    </item>
+    <item android:id="@+id/menu_acerca"
+         android:showAsAction="never"
+         android:title="Acerca de..."
+         android:orderInCategory="110">
+    </item>
+</menu>

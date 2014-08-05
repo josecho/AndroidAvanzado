@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="-21dp"
+        android:src="@drawable/sombra0" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="12dp"
+        android:src="@drawable/books" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/imageView1"
+        android:gravity="center"
+        android:lines="2"
+        android:text="TextView" />
+
+</RelativeLayout>
+
+
+<!-- andorid:layout_alignBottom="@+id/imageView1" -->

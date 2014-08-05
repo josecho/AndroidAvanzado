@@ -1,0 +1,26 @@
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="top"
+    android:background="#0099cc"
+    android:columnWidth="120dp"
+    android:numColumns="auto_fit"
+    android:horizontalSpacing="10dp"
+    android:verticalSpacing="10dp"
+    tools:context="com.example.audiolibros.MainActivity" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+</GridView>
