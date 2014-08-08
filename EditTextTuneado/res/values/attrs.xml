@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditTextTuneado">
+        <attr name="dibujarRayas" format="boolean"/>
+        <attr name="posicionNumeros" format="enum">
+            <enum name="derecha" value="0"/>
+            <enum name="izquierda" value="1"/>
+            <enum name="sin_numeros" value="2"/>
+        </attr>
+        <attr name="colorNumeros" format="color" />
+        <attr name="tamanyoNumeros" format="dimension"/>
+    </declare-styleable>
+</resources>

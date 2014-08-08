@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:nuevos="http://schemas.android.com/apk/res/com.example.edittexttuneado"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <com.example.edittexttuneado.EditTextTuneado 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="curso de Android \nSegunda línea \nTercera línea "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:typeface="monospace"
+        nuevos:dibujarRayas="true"
+        nuevos:posicionNumeros="izquierda"
+        nuevos:tamanyoNumeros="16dp"
+        nuevos:colorNumeros="#FF0000"
+        />
+
+</RelativeLayout>
