@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.zoomseekbar"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <com.example.zoomseekbar.ZoomSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
+
+    <com.example.zoomseekbar.ZoomSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        app:altoBar="40dp"
+        app:altoGuia="4dp"
+        app:altoNumeros="15dp"
+        app:altoPalanca="40dp"
+        app:altoRegla="10dp"
+        app:altoTexto="12dp"
+        app:anchoPalanca="10dp"
+        app:colorGuia="#FF9050"
+        app:colorPalanca="#FF0000"
+        app:colorRegla="#B0B070"
+        app:colorTexto="#00A0A0" />
+
+</LinearLayout>
