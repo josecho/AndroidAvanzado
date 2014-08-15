@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/lowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="100000000000" />
+
+        <EditText
+            android:id="@+id/upperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="100000000300" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/findprimesButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="triggerFindprimes"
+        android:text="Find primes in interval" />
+
+    <EditText
+        android:id="@+id/resultField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
