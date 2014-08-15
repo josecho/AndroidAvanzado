@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="redOnClick"
+        android:text="red" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="greenOnClick"
+        android:text="green" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="blueOnClick"
+        android:text="blue" />
+
+    <!--
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="longCalculation"
+        android:text="Cálculo prolongado" />
+
+    <EditText
+        android:id="@+id/resultField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    -->
+
+    <EditText
+        android:id="@+id/inputField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="3093215881333057" />
+
+    <Button
+        android:id="@+id/primecheckbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="triggerPrimecheck"
+        android:text="Is it prime?" />
+
+    <EditText
+        android:id="@+id/resultField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
