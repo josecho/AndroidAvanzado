@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/receivedText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:hint="Received text will be shown here"
+        android:textSize="12pt" />
+
+</LinearLayout>
