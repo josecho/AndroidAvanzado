@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="send"
+        android:text="Send!"
+        android:textSize="12pt" />
+
+    <EditText
+        android:id="@+id/textToBeSent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:hint="Text to be sent"
+        android:textSize="12pt" />
+
+</LinearLayout>
