@@ -19,11 +19,16 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.JsResult;
@@ -31,6 +36,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -40,11 +46,17 @@ public class ActividadPrincipal extends Activity {
 	private ProgressBar barraProgreso;
 	ProgressDialog dialogo;
 	Button btnDetener, btnAnterior, btnSiguiente;
+	final InterfazComunicacion miInterfazJava = new InterfazComunicacion(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		SharedPreferences prefs = getSharedPreferences("Preferencias",
+				Context.MODE_PRIVATE);
+		final String nombreJ1;
+		nombreJ1 = prefs.getString("jugador1", null);
+
 		navegador = (WebView) findViewById(R.id.webkit);
 		// server externo
 		// navegador.loadUrl("http://cursoandroid.hol.es/appweb/index.html");
@@ -65,10 +77,10 @@ public class ActividadPrincipal extends Activity {
 				dialogo.setMessage("Cargando...");
 				dialogo.setCancelable(true);
 				dialogo.show();
-				//btnDetener.setEnabled(true);
-				if (comprobarConectividad()){
+				// btnDetener.setEnabled(true);
+				if (comprobarConectividad()) {
 					btnDetener.setEnabled(true);
-				}else {
+				} else {
 					btnDetener.setEnabled(false);
 				}
 			}
@@ -86,6 +98,11 @@ public class ActividadPrincipal extends Activity {
 					btnSiguiente.setEnabled(true);
 				} else {
 					btnSiguiente.setEnabled(false);
+				}
+
+				if (nombreJ1 != null) {
+					navegador.loadUrl("javascript:cambiaNombreJugador(\"1\",\""
+							+ nombreJ1 + "\");");
 				}
 
 			}
@@ -162,20 +179,22 @@ public class ActividadPrincipal extends Activity {
 			}
 		});
 
-	}
+		navegador.addJavascriptInterface(miInterfazJava, "jsInterfazNativa");
+
+	}// fin onCreate
 
 	public void detenerCarga(View v) {
 		navegador.stopLoading();
 	}
 
 	public void irPaginaAnterior(View v) {
-		if (comprobarConectividad()){
+		if (comprobarConectividad()) {
 			navegador.goBack();
 		}
 	}
 
 	public void irPaginaSiguiente(View v) {
-		if (comprobarConectividad()){
+		if (comprobarConectividad()) {
 			navegador.goForward();
 		}
 	}
@@ -257,4 +276,67 @@ public class ActividadPrincipal extends Activity {
 		}
 		return true;
 	}
+
+	// Comunicacion webview-Android (aplicacións híbridas)
+	public class InterfazComunicacion {
+		Context mContext;
+
+		InterfazComunicacion(Context c) {
+			mContext = c;
+		}
+
+		public void mensaje(String contenido) {
+			Toast.makeText(mContext, contenido, Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.inicio, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.inicio:
+			navegador.loadUrl("javascript:mostrarInicio()");
+			break;
+		case R.id.jugador1:
+			nombreJugador("1");
+			break;
+		}
+		return true;
+	}
+
+	public void nombreJugador(final String jugador) {
+		AlertDialog.Builder alert = new AlertDialog.Builder(
+				ActividadPrincipal.this);
+		alert.setTitle("Nombre jugador" + jugador);
+		alert.setMessage("Nombre:");
+		final EditText nombre = new EditText(getBaseContext());
+		alert.setView(nombre);
+		alert.setPositiveButton("Guardar",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						Editable valor = nombre.getText();
+						navegador.loadUrl("javascript:cambiaNombreJugador(\""
+								+ jugador + "\",\"" + valor.toString() + "\");");
+						SharedPreferences prefs = getSharedPreferences(
+								"Preferencias", Context.MODE_PRIVATE);
+						SharedPreferences.Editor editor = prefs.edit();
+						editor.putString("jugador" + jugador, valor.toString());
+						editor.commit();
+					}
+				});
+		alert.setNegativeButton("Cancelar",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+					}
+				});
+		alert.show();
+	}
+
 }

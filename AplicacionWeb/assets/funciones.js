@@ -23,6 +23,14 @@ function mostrarAyuda() {
 	document.getElementById("ayuda").style.visibility = 'visible';
 }
 
+function cambiaNombreJugador(numJugador, nombreJugador) {
+	if (numJugador == "1") {
+		nombreJugador1 = nombreJugador;
+	} else {
+		nombreJugador2 = nombreJugador;
+	}
+}
+
 function iniciarJuego() {
 	finDelJuego = false;
 	numJugadas = 0;
@@ -32,15 +40,14 @@ function iniciarJuego() {
 	mostrarPartida();
 }
 
-
 function iniciarTablero() {
 	if (document.documentElement.clientWidth < document.documentElement.clientHeight) {
 		ancho = document.documentElement.clientWidth / 4;
 	} else {
-		ancho = document.documentElement.clientHeight / 4; 
+		ancho = document.documentElement.clientHeight / 4;
 	}
-	//ancho = 40;
-	
+	// ancho = 40;
+
 	for ( var i = 0; i < tamano; i++) {
 		for ( var j = 0; j < tamano; j++) {
 			var cell = document.getElementById(i + "_" + j);
@@ -49,18 +56,19 @@ function iniciarTablero() {
 			cell.style.height = ancho + "px";
 			cell.value = " ";
 			cell.className = "";
-		}	
+		}
 	}
 }
 
 function click_celda(elemento) {
 	var casilla = document.getElementById(elemento);
 	if (finDelJuego) {
-		alert("El juego ya ha terminado. Comienza uno nuevo!");
+		jsInterfazNativa
+				.mensaje("El juego ya ha terminado. Comienza uno nuevo!");
 		return;
 	}
 	if (casilla.innerHTML != "") {
-		alert("Casilla ocupada!");
+		jsInterfazNativa.mensaje("Casilla ocupada!");
 		return;
 	}
 	numJugadas++;
@@ -69,31 +77,36 @@ function click_celda(elemento) {
 		casilla.innerHTML = "X";
 		casilla.style.fontSize = (ancho * 0.8) + "px";
 		if (buscaGanador('X')) {
-			document.getElementById("turno").innerHTML ="Fin del Juego: Gana " + nombreJugador1 + "!!";
-			alert("Fin del Juego: Gana " + nombreJugador1 + "!!");
+			document.getElementById("turno").innerHTML = "Fin del Juego: Gana "
+					+ nombreJugador1 + "!!";
+			jsInterfazNativa.mensaje("Fin del Juego: Gana " + nombreJugador1
+					+ "!!");
 			finDelJuego = true;
 			return;
 		}
 		turno = "2";
-		if (numJugadas < tamano*tamano) {
-			document.getElementById("turno").innerHTML ="Turno "+ nombreJugador2;
+		if (numJugadas < tamano * tamano) {
+			document.getElementById("turno").innerHTML = "Turno "
+					+ nombreJugador2;
 		}
-		} else {
-			casilla.className = "tdO";
-			casilla.innerHTML = "O";
-			casilla.style.fontSize = (ancho * 0.8) + "px";
+	} else {
+		casilla.className = "tdO";
+		casilla.innerHTML = "O";
+		casilla.style.fontSize = (ancho * 0.8) + "px";
 		if (buscaGanador('O')) {
-			document.getElementById("turno").innerHTML ="Fin del Juego: Gana " + nombreJugador2 + "!!";
-			alert("Fin del Juego: Gana " + nombreJugador2+ "!!");
+			document.getElementById("turno").innerHTML = "Fin del Juego: Gana "
+					+ nombreJugador2 + "!!";
+			jsInterfazNativa.mensaje("Fin del Juego: Gana " + nombreJugador2
+					+ "!!");
 			finDelJuego = true;
 			return;
 		}
 		turno = "1";
-		document.getElementById("turno").innerHTML ="Turno " + nombreJugador1;
+		document.getElementById("turno").innerHTML = "Turno " + nombreJugador1;
 	}
-	if (numJugadas >= tamano*tamano) {
-		document.getElementById("turno").innerHTML ="Fin del Juego: EMPATE!!";
-		alert("Fin del Juego: EMPATE!!");
+	if (numJugadas >= tamano * tamano) {
+		document.getElementById("turno").innerHTML = "Fin del Juego: EMPATE!!";
+		jsInterfazNativa.mensaje("Fin del Juego: EMPATE!!");
 		finDelJuego = true;
 		return;
 	}
@@ -104,17 +117,21 @@ function casilla(i, j) {
 }
 
 function buscaGanador(turno) {
-	//verificamos diagonales
-	if (casilla(0,0)==turno && casilla(1,1)==turno && casilla(2,2)==turno)
+	// verificamos diagonales
+	if (casilla(0, 0) == turno && casilla(1, 1) == turno
+			&& casilla(2, 2) == turno)
 		return true;
-	if (casilla(0,2)==turno && casilla(1,1)==turno && casilla(2,0)==turno)
+	if (casilla(0, 2) == turno && casilla(1, 1) == turno
+			&& casilla(2, 0) == turno)
 		return true;
 	for (n = 0; n < tamano; n++) {
-		//verificamos columnas
-		if (casilla(n,0)==turno && casilla(n,1)==turno && casilla(n,2)==turno)
+		// verificamos columnas
+		if (casilla(n, 0) == turno && casilla(n, 1) == turno
+				&& casilla(n, 2) == turno)
 			return true;
-		//verificamos filas
-		if (casilla(0,n)==turno && casilla(1,n)==turno && casilla(2,n)==turno)
+		// verificamos filas
+		if (casilla(0, n) == turno && casilla(1, n) == turno
+				&& casilla(2, n) == turno)
 			return true;
-}
+	}
 }
