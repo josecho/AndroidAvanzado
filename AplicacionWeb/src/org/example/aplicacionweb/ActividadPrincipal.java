@@ -56,7 +56,8 @@ public class ActividadPrincipal extends Activity {
 				Context.MODE_PRIVATE);
 		final String nombreJ1;
 		nombreJ1 = prefs.getString("jugador1", null);
-
+		final String nombreJ2;
+		nombreJ2 = prefs.getString("jugador2", null);
 		navegador = (WebView) findViewById(R.id.webkit);
 		// server externo
 		// navegador.loadUrl("http://cursoandroid.hol.es/appweb/index.html");
@@ -103,6 +104,10 @@ public class ActividadPrincipal extends Activity {
 				if (nombreJ1 != null) {
 					navegador.loadUrl("javascript:cambiaNombreJugador(\"1\",\""
 							+ nombreJ1 + "\");");
+				}
+				if (nombreJ2 != null) {
+					navegador.loadUrl("javascript:cambiaNombreJugador(\"2\",\""
+							+ nombreJ2 + "\");");
 				}
 
 			}
@@ -306,6 +311,9 @@ public class ActividadPrincipal extends Activity {
 			break;
 		case R.id.jugador1:
 			nombreJugador("1");
+			break;
+		case R.id.jugador2:
+			nombreJugador("2");
 			break;
 		}
 		return true;

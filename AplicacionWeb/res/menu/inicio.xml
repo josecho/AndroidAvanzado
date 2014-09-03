@@ -11,5 +11,11 @@
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="Jug.1">
     </item>
+    <item
+        android:id="@+id/jugador2"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Jug.2">
+    </item>
+    
 
 </menu>
