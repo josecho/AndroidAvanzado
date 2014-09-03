@@ -12,9 +12,11 @@ function mostrarInicio() {
 }
 
 function mostrarPartida() {
-	document.getElementById("inicio").style.visibility = 'hidden';
+	// aplicando jquerymobile
+	/*document.getElementById("inicio").style.visibility = 'hidden';
 	document.getElementById("partida").style.visibility = 'visible';
-	document.getElementById("ayuda").style.visibility = 'hidden';
+	document.getElementById("ayuda").style.visibility = 'hidden';*/
+	$.mobile.changePage("#inicio");
 }
 
 function mostrarAyuda() {
@@ -37,7 +39,8 @@ function iniciarJuego() {
 	turno = "1";
 	document.getElementById("turno").innerHTML = "Turno " + nombreJugador1;
 	iniciarTablero();
-	mostrarPartida();
+	// aplicando jquerymobile
+	//mostrarPartida();
 }
 
 function iniciarTablero() {
